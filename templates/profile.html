@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<h2>welcome , {{name}}</h2>
+<h2>Year : {{year}}</h2>
+<h2>Department : {{department}}</h2>
+<h2>Cgpa : {{cgpa}}</h2>
+
+<ul>
+{% for subject in sub %}
+
+<li>{{subject}}</li>
+
+{% endfor %}
+
+</ul>
+
+{% if cgpa >=9 %}
+<h2>{{name}} , Carry on!</h2>
+
+{% else %}
+<h2>need to hardwork!</h2>
+
+{% endif %}
+
+<a href="/logout">Logout</a>
+
+{% endblock %}

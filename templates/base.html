@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Student Portal{% endblock %}</title>
+</head>
+<style>
+    header{background-color: rgb(234, 238, 240);padding: 20px; font-family: Arial, Helvetica, sans-serif;}
+    
+</style>
+<body>
+    <header>
+        <nav>
+            <a href="/">login</a>
+            <a href="/profile">profile</a>
+        </nav>
+    </header>
+
+    {% block content %}
+
+    {% endblock %}
+    
+    <footer></footer>
+</body>
+</html>
