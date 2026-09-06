@@ -30,3 +30,6 @@ StudentPortal/
 │   ├── login.html
 │   └── profile.html
 └── static/
+```
+##  Note
+This project does **not use a database**. Student information is temporarily stored in a Python dictionary . This is just  made for learning and practicing Flask fundamentals
