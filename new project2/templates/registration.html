@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="/reg" method="post">
+    {{form.hidden_tag()}}
+
+    {{form.Name.label}}<br>
+    {{form.Name(size=32)}}<br>
+    {% for error in form.Name.errors %}
+    <p style="color: red;">{{error}}</p>
+    {% endfor %}
+
+    {{form.Age.label}}
+    {{form.Age(size=32)}}<br>
+    {% for error in form.Age.errors %}
+    <p style="color: red;">{{error}}</p>
+    {% endfor %}
+
+    {{form.Course.label}}
+    {{form.Course}}<br>
+    {% for error in form.Course.errors %}
+    <p style="color: red;">{{error}}</p>
+    {% endfor %}
+
+    {{form.Email.label}}
+    {{form.Email(size=32)}}<br>
+    {% for error in form.Email.errors %}
+    <p style="color: red;">{{error}}</p>
+    {% endfor %}
+    
+    {{form.Submit()}}
+
+</form>
+{% endblock %}

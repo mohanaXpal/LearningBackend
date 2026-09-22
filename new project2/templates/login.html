@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="/" method="post">
+    {{loginForm.hidden_tag()}}
+
+    {{loginForm.Name.label}}<br>
+    {{loginForm.Name(size=32)}}<br><br>
+    {% for error in loginForm.Name.errors %}
+    <p style="color: red;">{{error}}</p>
+    {% endfor %}
+
+    {{loginForm.Password.label}}<br>
+    {{loginForm.Password(size=32)}}<br><br>
+    {% for error in loginForm.Password.errors %}
+    <p>{{error}}</p>
+    {% endfor %}
+    
+
+    {{loginForm.Submit()}}
+
+</form>
+
+{% endblock %}

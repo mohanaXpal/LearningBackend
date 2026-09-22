@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Collage Registration Form{% endblock %}</title>
+</head>
+<body>
+    <header style="margin-bottom: 15px;background-color: rgb(225, 225, 225);">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/reg">Registration</a>
+        </nav>
+    </header>
+    <main>
+        {% with messages= get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+             {% for category,msg in messages %}
+               {% if category=="success" %}
+                    <p style="color: green;">{{msg}}</p>
+                {% else %}
+                    <p style="color: rgb(128, 6, 0);">{{msg}}</p>
+                {% endif %}
+             {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+{% block content %}
+
+{% endblock %}
+    </main>
+</body>
+</html>
