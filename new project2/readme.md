@@ -42,7 +42,6 @@ The registration form contains:
 - Age
 - Course
 - Email
-- Password
 - Submit button
 
 ## Form Validation
@@ -58,8 +57,132 @@ When the submitted form is invalid, the user stays on the registration page and 
 
 ## Session Protection
 
-The registration page is protected using Flask sessions.
+## Registration Page Protection
+
+The registration page is protected using **Flask sessions**. A user must log in before they can access the registration page:
 
 ```python
 if "user" not in session:
     return redirect(url_for("loginform"))
+```
+
+### Name Verification Process
+
+After the registration form passes validation, the entered registration name is compared with the name stored in the session.
+
+#### Scenario 1: Names Match
+* Login Name 
+* ↓ 
+* Registration Name 
+* ↓ 
+* **Names Match** 
+* ↓ 
+* **Registration Successful** 
+* ↓ 
+* Success Page
+
+#### Scenario 2: Names Do Not Match
+* Login Name 
+* ↓ 
+* Registration Name 
+* ↓ 
+* **Names Do Not Match** 
+* ↓ 
+* **Error Flash Message** 
+* ↓ 
+* Redirect to Registration Page
+
+---
+
+### Handling Extra Spaces
+
+The project automatically cleans up unnecessary spaces in names using Python's **`re`** library. For example, an input with accidental extra spaces like:
+
+`Mohana   Pal`
+
+Is converted into a clean string:
+
+`Mohana Pal`
+
+This is achieved using the following regex substitution, which prevents unnecessary spacing from causing a name mismatch:
+
+```python
+import re
+
+name = re.sub(r"\s+", " ", name)
+```
+
+---
+
+### Flash Messages
+
+Flask's `flash()` function displays temporary notification feedback to the user:
+
+* **Successful registration:** Displays a success message.
+* **Different registration name:** Displays an error message.
+
+These categorized messages are retrieved and displayed in the HTML templates using:
+
+```python
+get_flashed_messages(with_categories=True)
+```
+
+
+## Technologies Used
+- Python
+- Flask
+- Flask-WTF
+- WTForms
+- Jinja2
+- HTML
+- Regular Expressions (re)
+
+## Project Structure
+```text
+new project2/
+│
+├── app.py
+├── form.py
+├── login.py
+│
+├── templates/
+│   ├── base.html
+│   ├── login.html
+│   ├── registration.html
+│   └── success.html
+│
+├── requirements.txt
+└── README.md
+```
+
+
+## What I Learned
+
+Through this project, I learned and practiced:
+
+- Flask routes
+- GET and POST requests
+- render_template()
+- redirect()
+- url_for()
+- Flask sessions
+- Protected routes
+- Flask-WTF
+- WTForms
+- validate_on_submit()
+- Form validators
+- Field validation errors
+- Flash messages
+- Flash message categories
+- Jinja2 template inheritance
+- Login and registration workflow
+- Logout functionality
+- Regular expressions
+- Normalizing user input
+- Git and GitHub
+
+## Purpose
+
+This project is part of my Backend Learning journey.
+
+The purpose of this project was to understand how different Flask concepts such as sessions, forms, validation, redirects, flash messages, and Jinja templates work together in a complete backend applicatio
